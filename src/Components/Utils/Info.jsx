@@ -25,17 +25,17 @@ function Info({ det, setClick, Click }) {
             <h1 className="text-3xl font-semibold tracking-wide">{det.name}</h1>
             <h2 className="text-xl">${det.price}</h2>
           </div>
-          <div className="w-full h-[66%] flex flex-col gap-5 p-2">
+          <div className="w-full h-[66%] flex flex-col gap- p-2">
             <p>{det.description}</p>
             <h3>Features:-</h3>
             {det.features.map((f, i) => (
-              <div className="flex flex-col gap-0 ">
+              <div className="flex flex-col g ">
                 <ul className="">
-                <li className="">{f}</li>
+                <li className="border-2  rounded-md p-1  hover:scale-100 cursor-pointer ">{f}</li>
               </ul>
               </div>
             ))}
-            <h3>Status: {det.status}</h3>
+            <h3 className="mt-5">Status: {det.status}</h3>
           </div>
         </div>
       </div>

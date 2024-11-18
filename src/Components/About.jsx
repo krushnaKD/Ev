@@ -1,11 +1,34 @@
-import React from "react";
+import { inView, useAnimation, motion } from "framer-motion";
+import React, { useEffect } from "react";
+import { useInView } from 'react-intersection-observer';
 
 function About() {
+
+  const controls = useAnimation()
+  
+  const [ref,inView] = useInView({threshold:0.2});
+  useEffect(()=>{
+    if(inView) {
+      controls.start({
+        opacity:1,
+        y:0,
+        transition:{duration:1},
+      })
+    }  else {
+      controls.start({opacity:0,y:50});
+    }
+
+  },[controls,inView])
+
   return (
     <>
-      <h1 className="w-full text-center text-8xl font-extrabold tracking-wider">
+      <motion.h1 
+        ref={ref}
+        initial={{opacity:0,y:50}}
+        animate={controls}
+      className="w-full text-center text-8xl font-extrabold tracking-wider">
         About
-      </h1>
+      </motion.h1>
       <div className="w-full h-screen p-20 flex gap-10">
         <div className="w-[40%] ">
           <img 
@@ -15,7 +38,9 @@ function About() {
           />
         </div>
         <div className="w-[50%]">
-          <p className="text-lg font-medium">
+          <motion.p className="text-lg font-medium"
+      
+          >
             1.Battery: Acts as the primary energy source, powering the scooter's
             motor and electronics.
             <br />
@@ -32,7 +57,7 @@ function About() {
             <br />
             6.MCB (Miniature Circuit Breaker): Protects the system by
             interrupting the circuit in case of electrical faults
-          </p>
+          </motion.p>
         </div>
       </div>
     </>

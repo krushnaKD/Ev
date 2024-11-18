@@ -1,12 +1,38 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { MdArrowOutward } from "react-icons/md";
+import { motion, useAnimation } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 function Upcoming() {
+
+  const controls = useAnimation();
+
+  const [ref, inView] = useInView({ threshold: 0.2 });
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 1 },
+      });
+    } else {
+      controls.start({ opacity: 0, y: 50 });
+    }
+  }, [controls, inView]);
+
+
   return (
     <div className='w-full h-screen  cursor-pointer border-b border-black '>
-      <div className='w-full'>
+    
+      <motion.div ref={ref} className='w-full' 
+       initial={{ opacity: 0, y: 50 }}
+       animate={controls}
+       style={{
+         fontSize: '2rem',
+         textAlign: 'center',
+       }}>
         <h1 className='text-[6rem] font-bold leading-tight   tracking-tighter text-center'>Driving the Future Electric <br /> Vehicles.</h1>
-      </div>
+      </motion.div>
       <div className='w-full flex gap-20 items-center mt-[10%] justify-center text-zinc-200 '>
         <div className='w-[25vw] h-[30vh] relative bg-black opacity-50 shadow-lg rounded-lg flex items-center justify-center'>
         <img className='w-44 ' src="https://www.mooving.com/wp-content/uploads/2022/09/Mooving_66.png" alt="" />

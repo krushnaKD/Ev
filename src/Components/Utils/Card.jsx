@@ -24,10 +24,11 @@ function Card({ det }) {
             onClick={()=>{
               Togglebtn(det)           }}
             to="/info"
-            className="flex gap-1 items-center hover:scale-110 cursor-pointer"
+            className="flex  gap-1 items-center hover:scale-110 cursor-pointer"
           >
             <MdArrowOutward />
             Learn More
+       
           </NavLink>
         </div>
         <div className="w-[50%]">

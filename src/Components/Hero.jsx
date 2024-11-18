@@ -13,6 +13,17 @@ function Hero() {
   //   }
   // }, []);
 
+  window.onload = () => {
+    gsap.from(imageref.current, {
+      x: "40vw", // Start from 100% of the viewport width (offscreen to the right)
+      duration: 4, // Animation duration in seconds
+      ease: "bounce.out", // Smooth easing effect
+      opacity: 0.1, // Start with opacity 0 for a fade-in effect
+      
+    });
+  };
+
+
   return (
     <div className="w-full h-screen flex items-center justify-between ">
       <div className="h-full w-[40%] flex flex-col items-start gap-10 ml-10 p-20">
@@ -35,7 +46,7 @@ function Hero() {
       <div className="h-screen w-[60%] flex flex-col relative">
         <img
           ref={imageref}
-          className=" w-[27vw] transform scale-x-[-1] absolute left-[25%] top-10"
+          className=" w-[27vw] transform scale-x-[-1] absolute left-[29%] top-10 z-20"
           src="https://pngimg.com/uploads/scooter/scooter_PNG11280.png"
           alt=""
         />

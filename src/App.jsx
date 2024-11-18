@@ -6,6 +6,8 @@ import About from "./Components/About";
 import Navbar from "./Components/Navbar";
 import Info from "./Components/Utils/Info";
 import Upcoming from "./Components/Upcoming";
+import Footer from "./Components/Footer";
+import ScrollText from "./Components/Utils/ScrollText";
 
 function App() {
   return (
@@ -21,8 +23,8 @@ function App() {
         </Routes>
         <Products/>
         <Upcoming/>
-        
         <About/>
+        <Footer/>
       </div>
     </>
   );
